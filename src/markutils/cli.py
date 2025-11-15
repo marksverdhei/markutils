@@ -1,6 +1,6 @@
 
 def main():
-    print("Hello from python-template")
+    print("Hello from markutils")
 
 
 if __name__ == "__main__":
