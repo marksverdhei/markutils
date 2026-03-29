@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "pandas>=1.5",
+    "safetensors>=0.4",
+]
 
 [project.scripts]
 markutils = "markutils:cli.main"
@@ -16,6 +19,7 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
     "ipython",
+    "pyarrow>=10",
     "pytest",
     "ruff",
 ]
