@@ -1,5 +1,3 @@
-import sys
-
 from typing import Any
 from safetensors import safe_open
 
