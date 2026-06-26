@@ -19,12 +19,6 @@ uv sync --dev
 source .venv/bin/activate
 ```
 
-For development, make sure to install the project with the `-e` flag 
-so the source code isn't distributed to `.venv`:
-```
-uv pip install -e .
-```
-
 Then you can run the default cli, which can be customized in `cli.py` and `pyproject.toml`  
 ```
 $ markutils
