@@ -15,4 +15,4 @@ def get_state_dict(path: str) -> dict[str, Any]:
 def print_state_dict_shapes(tensors: dict[str, Any]) -> None:
     """Print the shapes of tensors in a state dict."""
     for k in sorted(tensors.keys()):
-        print(f"{k}: {tensors[k].shape=}")
+        print(f"{k}: {tuple(tensors[k].shape)}")

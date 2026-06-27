@@ -51,6 +51,17 @@ class TestPrintStateDictShapes:
         assert "weight" in out
         assert "(100,)" in out
 
+    def test_shape_rendered_without_debug_expression_leak(self, capsys):
+        # Regression: the f-string '=' debug specifier (`{tensors[k].shape=}`)
+        # echoed the literal expression, so `markutils inspect` printed lines
+        # like `w: tensors[k].shape=(4, 8)`. Output should be just the shape.
+        t = MagicMock()
+        t.shape = (4, 8)
+        print_state_dict_shapes({"w": t})
+        out = capsys.readouterr().out
+        assert "tensors[k].shape" not in out
+        assert out.strip() == "w: (4, 8)"
+
 
 # ---------------------------------------------------------------------------
 # get_state_dict — mocked safe_open
