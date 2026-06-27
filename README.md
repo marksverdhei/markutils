@@ -1,31 +1,34 @@
 # markutils
 
-This project uses [`uv`](https://github.com/astral-sh/uv), which can be installed in one line: 
+Small grab-bag of data and model utilities. Two CLI subcommands so far:
+
 ```bash
-# On macOS and Linux.
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# Convert between csv / tsv / json / jsonl / parquet (format inferred from extension)
+markutils convert input.csv output.parquet
+
+# Print tensor shapes from a safetensors checkpoint
+markutils inspect model.safetensors
 ```
 
-To get started with the project:
+Library-side: `markutils.utils.data.load_dataframe` / `save_dataframe` for the same
+format-roundtrip helpers, and `markutils.checkpoints.get_state_dict` /
+`print_state_dict_shapes` for safetensors inspection.
 
-```
-git clone https://github.com/marksverdhei/markutils.git
-cd markutils
-```
+## Install
 
-Then install project with
-```
-uv sync --dev
-source .venv/bin/activate
-```
-
-Then you can run the default cli, which can be customized in `cli.py` and `pyproject.toml`  
-```
-$ markutils
-Hello from markutils
-```
-
-How to install:
 ```bash
 pip install git+https://github.com/marksverdhei/markutils.git
+```
+
+## Develop
+
+This project uses [`uv`](https://github.com/astral-sh/uv):
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+git clone https://github.com/marksverdhei/markutils.git
+cd markutils
+uv sync --dev
+source .venv/bin/activate
+uv run pytest
 ```
